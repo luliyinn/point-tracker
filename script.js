@@ -12,6 +12,10 @@ const totalPoint = document.getElementById("total-points");
 const newGoal = document.getElementById("new-goal");
 const hideGoal = document.getElementById("hide-goal")
 
+const newTask = document.getElementById("new-task");
+const hideTask = document.getElementById("hide-task")
+const taskDiv = document.getElementById("task-inp")
+
 const input = document.getElementById("imageinput");
 const preview = document.getElementById("preview");
 const newGoalContainer = document.getElementById("image-inp");
@@ -19,6 +23,14 @@ const newGoalContainer = document.getElementById("image-inp");
 const setNewPoint = document.getElementById("set-point");
 const doneButton = document.getElementById("done-btn");
 const nameInput = document.getElementById("name")
+
+const pointsEarned = document.getElementById("points-earned");
+const taskName = document.getElementById("task-name");
+const taskColor = document.getElementById("task-color");
+const taskAdd = document.getElementById("task-add");
+
+const testPlaceholder = document.getElementById("test-placeholder");
+
 
 // --- INITIAL LOAD ---
 totalPoint.innerHTML = point;
@@ -35,10 +47,22 @@ newGoal.addEventListener('click', function() {
   hideGoal.style.display = 'block'
 })
 
+newTask.addEventListener('click', function() {
+  taskDiv.style.display = 'block';
+  newTask.style.display = 'none'
+  hideTask.style.display = 'block'
+})
+
 hideGoal.addEventListener('click', function() {
   newGoalContainer.style.display = 'none';
   newGoal.style.display = 'block'
   hideGoal.style.display = 'none'
+})
+
+hideTask.addEventListener('click', function() {
+  taskDiv.style.display = 'none';
+  newTask.style.display = 'block'
+  hideTask.style.display = 'none'
 })
 
 for (const button of plusOne) {
@@ -186,3 +210,27 @@ const closeBtn = document.getElementById('close');
 closeBtn.addEventListener('click', () => {
   window.electronAPI.quitApp();
   });
+
+pointsEarned.addEventListener('change', function() {
+  pointsEarnedValue = pointsEarned.value;
+  testPlaceholder.innerHTML = pointsEarnedValue
+})
+
+taskName.addEventListener('change', function() {
+  taskNameValue = taskName.value;
+  testPlaceholder.innerHTML = taskNameValue
+})
+
+taskColor.addEventListener('change', function() {
+  taskColorValue = taskColor.value;
+  testPlaceholder.style.color = taskColorValue
+})
+
+taskAdd.addEventListener('click', function() {
+  
+})
+
+
+
+
+

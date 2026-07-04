@@ -58,7 +58,7 @@ select {
   width: 290px;
 }
 
-#hide-goal {
+#hide-goal, #hide-task {
   display: none;
 }
 
@@ -138,6 +138,17 @@ select {
   font-family: nintendo;
   background-image: linear-gradient(to bottom, #ffffff, #ffdbe2);
   color: rgb(94, 69, 55);
+}
+
+#new-task, #hide-task {
+  margin-top: 10px;
+  font-size:40px;
+  width: 350px;
+  border-radius: 100px;
+  border:1px solid black;
+  font-family: nintendo;
+  background-image: linear-gradient(to bottom, #ffffff, #ffe298);
+  color: rgb(121, 65, 65);
 }
 
 .plus-one {
@@ -251,4 +262,13 @@ select {
 .plus-two:hover, .plus-one:hover, .plus-three:hover {
   scale: 1.05;
   transition:scale 0.1s;
+}
+
+#task-inp {
+  border:1px solid black;
+  padding: 5px;
+  margin: 5px;
+  background-image: url('ui/bg\ task.png');
+  background-size: 40px;
+  display: none;
 }

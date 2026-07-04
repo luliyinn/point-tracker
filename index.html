@@ -11,7 +11,7 @@
     <div class="screen-1">
 
       <p id="total-points"></p>
-
+<!--
       <button class="plus-one">study 1hr || +10</button>
       <button class="plus-two">complete assignment || +5</button>
       <button class="plus-two">sleep before 10.30 pm || +5</button>
@@ -23,6 +23,8 @@
       <button class="plus-three">+2</button>
       <button class="plus-two">+5</button>
       <button class="plus-one">+10</button>
+      
+-->
 
       <div id="container-one">
         <button id="new-goal">new goal</button>
@@ -30,12 +32,26 @@
         <div id="image-inp">
           <input type="file" id="imageinput" accept="image/*">
           <div id="preview"></div>
-          <input id="set-point" type="number" placeholder="how much points for this">
+          <input id="set-point" type="number" placeholder="points needed">
           <input id="name" type="text" placeholder="name">
           <button id="done-btn">add</button>
         </div>
       </div>
+
+      <div id="container-two">
+        <button id="new-task">new task</button>
+        <button id="hide-task">hide</button>
+        <div id="task-inp">
+          <input id="points-earned" type="number" placeholder="points earned">
+          <input id="task-name" type="text" placeholder="task">
+          <input id="task-color" type="color" placeholder="color" value="#ffd9f0">
+          <button id="task-add">add</button>
+        </div>
+        <p id="test-placeholder" style="font-family: 'Courier New', Courier, monospace;">hello world</p>
+      </div>
     </div>
+
+    
     
     <div class="screen-2">   
       <p class="wishlist-p">wishlist</p>
