@@ -247,3 +247,8 @@ select {
   color:#00000000;  
   border:none;
 }
+
+.plus-two:hover, .plus-one:hover, .plus-three:hover {
+  scale: 1.05;
+  transition:scale 0.1s;
+}
