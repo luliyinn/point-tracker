@@ -12,4 +12,18 @@
   <p>after adding a new task, they will show up under your total points. <b>right click to delete them!</b></p>
   <img width="300" src="ui/Screenshot_52.png">
 </details>
+
+<details>
+  <summary><h2>Wishlist</h2></summary>
+  <img width="300" height="300" src="ui/Screenshot_49.png">
+  <p>with your points, you can save up for a wishlist item that you want. you can also set up the wishlist item by adding an image, how much points it cost, and a name for it!</p>
+  <img width="300" src="ui/Screenshot_47.png">
+  <p>after adding your wishlist item, they will show up on the bottom screen. click on the "buy" button if you want to spend your points on it! <b>to delete a wishlist item, right         click on the "buy" button.</b></p>
+  <img width="300" src="ui/Screenshot_53.png">
+</details>
+
+<details>
+  <summary><h2>Wishlist</h2></summary>
+  <img width="300" src="ui/Untitled222_20260706221836.png">
+</details>
   
