@@ -1,4 +1,4 @@
-let point = parseInt(localStorage.getItem('savedPoints')) || 0; // Load saved points or start at 0
+let point = parseInt(localStorage.getItem('savedPoints')) || 0; 
 let imageURL = '';
 let directNumber = 0;
 let name = '';
@@ -32,13 +32,11 @@ const taskAdd = document.getElementById("task-add");
 const testPlaceholder = document.getElementById("test-placeholder");
 
 let taskList = JSON.parse(localStorage.getItem('mytaskList')) || [];
-// --- INITIAL LOAD ---
 totalPoint.innerHTML = point;
-// Load saved goals from storage
 const savedGoalsHTML = localStorage.getItem('goalCards');
 if (savedGoalsHTML) {
     document.getElementById("flex").innerHTML = savedGoalsHTML;
-    reattachBuyButtons(); // We need to make the "buy" buttons work again after loading
+    reattachBuyButtons(); 
 }
 
 newGoal.addEventListener('click', function() {
@@ -84,7 +82,7 @@ for (const button of minusOne) {
 function addPoint(number) {
   point = point + number
   totalPoint.innerHTML = point
-  localStorage.setItem('savedPoints', point); // Save point
+  localStorage.setItem('savedPoints', point);
 }
 
 input.addEventListener('change', function() {
@@ -92,7 +90,7 @@ input.addEventListener('change', function() {
   if (file) {
     const reader = new FileReader(); 
     reader.onload = function(e) {
-        imageURL = e.target.result; // Use Base64 so image saves forever
+        imageURL = e.target.result; 
         preview.innerHTML = `<img src="${imageURL}" style="max-width: 100px;margin:10px">`;
     };
     reader.readAsDataURL(file);
@@ -112,7 +110,6 @@ doneButton.addEventListener('click', function() {
   saveAllGoals();
 })
 
-// Function to build the card (Shared by click and load)
 function createGoalCard(img, price, goalName, buyStatus) {
   const newDiv = document.createElement('div');
   const newImage = document.createElement('img');
@@ -127,6 +124,10 @@ function createGoalCard(img, price, goalName, buyStatus) {
   
   newImage.src = img;
   newImage.style.height = '100px'
+  newImage.style.maxWidth = '100px'
+  newImage.style.marginLeft = 'auto'
+  newImage.style.marginRight = 'auto'
+  newImage.style.display = 'block'
 
   thingPrice.textContent = price;
   thingPrice.className = 'price-p'
@@ -178,7 +179,7 @@ function createGoalCard(img, price, goalName, buyStatus) {
       document.getElementById('yes-btn-2').onclick = function() {
       newDiv.remove();
       saveAllGoals();
-      confirmBox.style.display = 'none';
+      document.getElementById('confirmation-2').style.display = 'none';
     };
 
     document.getElementById('no-btn-2').onclick = function() {
@@ -195,18 +196,20 @@ function saveAllGoals() {
     localStorage.setItem('goalCards', flexContent);
 }
 
-// This fixes the buttons when you refresh the page
 function reattachBuyButtons() {
     const cards = document.querySelectorAll("#flex > div");
+
     cards.forEach(card => {
         const btn = card.querySelector(".buy-btn-logic");
-        const status = card.querySelector("p:last-child");
-        const price = parseInt(card.childNodes[0].textContent);
+        const status = card.querySelector(".status-p");
+        const price = parseInt(card.querySelector(".price-p").textContent);
 
         btn.onclick = function() {
-            point = point - price;
+            point -= price;
             totalPoint.innerHTML = point;
             status.innerHTML = "✓";
+            status.style.color = '#418c47';
+
             localStorage.setItem('savedPoints', point);
             saveAllGoals();
         };
@@ -234,10 +237,7 @@ function createTaskElement(pointVal, nameVal, colorVal) {
   newTask.className = 'saved-task-item'; 
 
   newTask.addEventListener('click', function() {
-    // Convert the pointVal string into a clean integer number
     const pointsToAdd = parseInt(pointVal) || 0;
-    
-    // Use your existing addPoint function to update total points and save
     addPoint(pointsToAdd); 
   });
 
@@ -262,7 +262,6 @@ function createTaskElement(pointVal, nameVal, colorVal) {
 
 window.addEventListener('DOMContentLoaded', () => {
   taskList.forEach(task => {
-    // goal.point, goal.name, and goal.color come from our saved data structure
     createTaskElement(task.point, task.name, task.color);
   });
 });
@@ -276,34 +275,27 @@ taskName.addEventListener('input', function() { nameValue = taskName.value; });
 taskColor.addEventListener('input', function() { colorValue = taskColor.value; });
 
 function savelocalStorage() {
-  // 1. Grab values directly from inputs immediately on click (Prevents empty/blank bugs)
   const currentPoint = pointsEarned.value || "0";
   const currentName = taskName.value || "Unnamed Task";
   const currentColor = taskColor.value || "#ffffff";
 
-  // 2. Build the object using clean variables
   const newTaskObj = {
     point: currentPoint,
     name: currentName,
     color: currentColor
   };
 
-  // 3. Push the new object into your list array
   taskList.push(newTaskObj);
 
-  // 4. Save the updated list array to localStorage
   localStorage.setItem('mytaskList', JSON.stringify(taskList));
 
-  // 5. Draw the new button element on the screen right away
   createTaskElement(currentPoint, currentName, currentColor);
 
-  // 7. Reset global tracking variables
   pointValue = '';
   nameValue = '';
   colorValue = '';
 }
 
-// Attach the function to your button click
 taskAdd.addEventListener('click', savelocalStorage);
 
 const resetBtnPts = document.getElementById("reset-btn-pts");
@@ -313,6 +305,57 @@ resetBtnPts.addEventListener('click', function() {
   point = 0;
   window.location.reload();
 });
+
+const helpDiv = document.getElementById("help-div")
+const helpBtn = document.getElementById("help")
+
+helpBtn.addEventListener('click', function() {
+  if (helpDiv.style.display == 'block') {
+    helpDiv.style.display = 'none'
+  } else {
+    helpDiv.style.display = 'block'
+  }
+  
+
+})
+
+const taskInfoBtn = document.getElementById("task-info-btn")
+const taskInfoDiv = document.getElementById("task-info")
+
+taskInfoBtn.addEventListener('click', function() {
+  if (taskInfoDiv.style.display == 'block') {
+    taskInfoDiv.style.display = 'none'
+  } else {
+    taskInfoDiv.style.display = 'block'
+  }
+})
+
+const wishInfoBtn = document.getElementById("wishlist-info-btn")
+const wishInfoDiv = document.getElementById("wishlist-info")
+
+wishInfoBtn.addEventListener('click', function() {
+  if (wishInfoDiv.style.display == 'block') {
+    wishInfoDiv.style.display = 'none'
+  } else {
+    wishInfoDiv.style.display = 'block'
+  }
+})
+
+const otherBtn = document.getElementById("other-btn")
+const otherDiv = document.getElementById("other-info")
+
+otherBtn.addEventListener('click', function() {
+  if (otherDiv.style.display == 'block') {
+    otherDiv.style.display = 'none'
+  } else {
+    otherDiv.style.display = 'block'
+  }
+})
+
+document.getElementById("close-info").addEventListener('click', function() {
+  helpDiv.style.display = 'none'
+})
+
 
 
 

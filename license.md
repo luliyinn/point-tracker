@@ -1,1 +1,1 @@
-follow gyozalords on ig
+follow @gyozalords on ig!!
